@@ -1,0 +1,14 @@
+import numpy as np
+import matplotlib.pyplot as plt
+a=np.random.rand(1000,1000)
+r=[10,50,75,100,250,500,750]
+u,s,v=np.linalg.svd(a)
+errorlist=[]
+for i in r:
+  approxa=np.zeros_like(a)
+  sigma[:i,:i]=np.diag(s[:i])
+  approxa=u.dot(sigma.dot(v))
+  error=np.sum(np.square(a-approxa))
+  errorlist.append(error)
+print(errorlist)
+plt.stem(r,errorlist)
